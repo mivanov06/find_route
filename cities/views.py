@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, CreateView, UpdateView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 
 from cities.forms import HtmlForm, CityForm
 from cities.models import City
 
 __all__ = (
-    'home', 'CityDetailView', 'CityCreateView', 'CityUpdateView'
+    'home', 'CityDetailView', 'CityCreateView', 'CityUpdateView', 'CityDeleteView'
 )
 
 
@@ -45,3 +45,12 @@ class CityUpdateView(UpdateView):
     template_name = 'cities/update.html'
     success_url = reverse_lazy('cities:home')
 
+
+class CityDeleteView(DeleteView):
+    model = City
+    template_name = 'cities/delete.html'
+    success_url = reverse_lazy('cities:home')
+
+    # удаление без подтверждения
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
