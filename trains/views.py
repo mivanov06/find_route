@@ -15,7 +15,6 @@ __all__ = (
 
 
 def home(request, pk=None):
-    form = TrainForm()
     qs = Train.objects.all()
     lst = Paginator(qs, 2)
     page_number = request.GET.get('page')
