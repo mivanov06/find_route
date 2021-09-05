@@ -23,7 +23,7 @@ def home(request, pk=None):
 
 
 class TrainListView(ListView):
-    paginate_by = 5
+    paginate_by = 15
     model = Train
     template_name = 'trains/home.html'
 
