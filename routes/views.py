@@ -2,7 +2,7 @@ from django.shortcuts import render
 from routes.forms import RouteForm
 from django.contrib import messages
 
-from utils import get_routes
+from .utils import get_routes
 
 
 def home(request):
